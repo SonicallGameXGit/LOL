@@ -1,0 +1,184 @@
+[gd_scene load_steps=19 format=3 uid="uid://bnc10h7d28o1a"]
+
+[ext_resource type="Texture2D" uid="uid://biuymvyh4kojl" path="res://Sprites/GUI/Key.png" id="1_o7sd5"]
+[ext_resource type="Texture2D" uid="uid://bnumvnmevlqmu" path="res://Sprites/GUI/HealthFrame0.png" id="2_0rokw"]
+[ext_resource type="FontFile" uid="uid://bm3ajcbsve4hj" path="res://Fonts/dogicapixel.ttf" id="2_a1wi2"]
+[ext_resource type="Texture2D" uid="uid://chsrf8pmmvrjp" path="res://Sprites/GUI/KeySparklesFrame0.png" id="2_xkijb"]
+[ext_resource type="Texture2D" uid="uid://bxtni6b1ug6dd" path="res://Sprites/GUI/HealthFrame1.png" id="3_1t5ed"]
+[ext_resource type="Texture2D" uid="uid://b3rtonh6d3n6m" path="res://Sprites/GUI/KeySparklesFrame1.png" id="3_co7tc"]
+[ext_resource type="Texture2D" uid="uid://2ga8smvdg0km" path="res://Sprites/GUI/KeySparklesFrame2.png" id="4_1bsmx"]
+[ext_resource type="Texture2D" uid="uid://dglhlwhlemlfk" path="res://Sprites/GUI/HealthFrame2.png" id="4_cyfu6"]
+[ext_resource type="Texture2D" uid="uid://byb6fi133cwh0" path="res://Sprites/GUI/KeySparklesFrame3.png" id="5_tl3ih"]
+[ext_resource type="Texture2D" uid="uid://dttgnu78jtuiq" path="res://Sprites/GUI/KeySparklesFrame4.png" id="6_madfa"]
+[ext_resource type="Texture2D" uid="uid://beb1gfak18ysl" path="res://Sprites/GUI/Rebirth.png" id="9_fnn7g"]
+[ext_resource type="Texture2D" uid="uid://dggcasgxwy1mh" path="res://Sprites/GUI/Vignette.png" id="11_1y6g6"]
+[ext_resource type="Texture2D" uid="uid://c4e0yninkeo3w" path="res://Sprites/GUI/RebirthButton.png" id="13_kk1vq"]
+[ext_resource type="Texture2D" uid="uid://bq2vwr0bnq0l1" path="res://Sprites/GUI/RebirthButtonPressed.png" id="14_jr20c"]
+[ext_resource type="Script" path="res://Prefabs/RebirthButton.gd" id="15_gf58g"]
+
+[sub_resource type="Theme" id="Theme_047gh"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_6e2nv"]
+frames = 5
+frame_0/texture = ExtResource("2_xkijb")
+frame_0/duration = 1.61
+frame_1/texture = ExtResource("3_co7tc")
+frame_1/duration = 0.22
+frame_2/texture = ExtResource("4_1bsmx")
+frame_2/duration = 0.22
+frame_3/texture = ExtResource("5_tl3ih")
+frame_3/duration = 0.22
+frame_4/texture = ExtResource("6_madfa")
+frame_4/duration = 0.22
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_f7mdj"]
+frames = 3
+frame_0/texture = ExtResource("2_0rokw")
+frame_0/duration = 1.05
+frame_1/texture = ExtResource("3_1t5ed")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("4_cyfu6")
+frame_2/duration = 0.1
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vignette2" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(2318, 1304)
+texture = ExtResource("11_1y6g6")
+
+[node name="RightTopCornerHorizontal" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -375.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 255.0
+grow_horizontal = 0
+pivot_offset = Vector2(325, 0)
+alignment = 2
+
+[node name="RebirthesLabel" type="Label" parent="RightTopCornerHorizontal"]
+layout_mode = 2
+theme = SubResource("Theme_047gh")
+theme_override_fonts/font = ExtResource("2_a1wi2")
+theme_override_font_sizes/font_size = 230
+text = "0"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="RightTopCornerHorizontal"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("9_fnn7g")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="LeftTopCornerHorizontal" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 619.0
+offset_bottom = 255.0
+
+[node name="TextureRect" type="TextureRect" parent="LeftTopCornerHorizontal"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("1_o7sd5")
+expand_mode = 3
+
+[node name="TextureRect3" type="TextureRect" parent="LeftTopCornerHorizontal/TextureRect"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+offset_left = 69.0
+offset_top = -22.0
+offset_right = 159.0
+offset_bottom = 68.0
+pivot_offset = Vector2(25, 11)
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+texture = SubResource("AnimatedTexture_6e2nv")
+expand_mode = 3
+
+[node name="KeysLabel" type="Label" parent="LeftTopCornerHorizontal"]
+layout_mode = 2
+theme = SubResource("Theme_047gh")
+theme_override_fonts/font = ExtResource("2_a1wi2")
+theme_override_font_sizes/font_size = 230
+text = "0"
+vertical_alignment = 1
+
+[node name="HealthIcon" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -350.0
+offset_right = 150.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(150, 300)
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+texture = SubResource("AnimatedTexture_f7mdj")
+
+[node name="Vignette" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -878.0
+offset_top = -494.0
+offset_right = 878.0
+offset_bottom = 494.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(2798, 1574)
+texture = ExtResource("11_1y6g6")
+
+[node name="RebirthButton" type="TextureButton" parent="."]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -168.0
+offset_top = 50.0
+offset_right = 168.0
+offset_bottom = 218.0
+grow_horizontal = 2
+pivot_offset = Vector2(168, 0)
+texture_normal = ExtResource("13_kk1vq")
+texture_pressed = ExtResource("14_jr20c")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("15_gf58g")
+
+[connection signal="button_up" from="RebirthButton" to="RebirthButton" method="_on_button_up"]

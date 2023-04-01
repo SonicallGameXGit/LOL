@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn50vgo8lkaj1"]
+
+[ext_resource type="Script" path="res://Prefabs/KillerBullet.gd" id="1_qpfec"]
+[ext_resource type="Texture2D" uid="uid://b6h8w6iivc5gr" path="res://Sprites/KillerBullet.png" id="2_ghrx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38to4"]
+size = Vector2(2, 2)
+
+[node name="Bullet" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_qpfec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_38to4")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_ghrx7")

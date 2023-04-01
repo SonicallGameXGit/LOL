@@ -1,0 +1,178 @@
+[gd_scene load_steps=10 format=3 uid="uid://r0b8lhmt3k2y"]
+
+[ext_resource type="Texture2D" uid="uid://nposs6k2fn7p" path="res://Sprites/KillerMinorL1.png" id="1_3tm6r"]
+[ext_resource type="Script" path="res://Prefabs/KillerController.gd" id="1_7hj77"]
+[ext_resource type="Texture2D" uid="uid://ddx0l0s6spfym" path="res://Sprites/KillerMinorL1Run.png" id="3_b4qhe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b4oqn"]
+radius = 2.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_we8cc"]
+radius = 7.0
+height = 18.0
+
+[sub_resource type="Animation" id="Animation_ejd0b"]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_3tm6r")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_l7jsc"]
+resource_name = "KillerRun"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_b4qhe")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_80bmg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_3tm6r")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e6erk"]
+_data = {
+"KillerKick": SubResource("Animation_ejd0b"),
+"KillerRun": SubResource("Animation_l7jsc"),
+"RESET": SubResource("Animation_80bmg")
+}
+
+[node name="KillerMinorL1" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_7hj77")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_b4oqn")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(4, 0)
+texture = ExtResource("1_3tm6r")
+hframes = 2
+
+[node name="KickArea" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/KickArea"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_we8cc")
+
+[node name="DamageArea" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/DamageArea"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_we8cc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_e6erk")
+}
+
+[connection signal="body_entered" from="CharacterBody2D/KickArea" to="CharacterBody2D" method="_on_kick_area_body_entered"]
+[connection signal="body_entered" from="CharacterBody2D/DamageArea" to="CharacterBody2D" method="_on_damage_area_body_entered"]

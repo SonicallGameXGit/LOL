@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://dggkmnk07j3ut"]
+
+[ext_resource type="Texture2D" uid="uid://biuymvyh4kojl" path="res://Sprites/GUI/Key.png" id="1_u5mgx"]
+[ext_resource type="Texture2D" uid="uid://drjfpq40wovsm" path="res://Sprites/key_sparkles.png" id="2_l6ycf"]
+[ext_resource type="Script" path="res://Prefabs/Sparkles.gd" id="3_nvofm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4aoau"]
+size = Vector2(15, 8)
+
+[sub_resource type="Animation" id="Animation_4jgp7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_yc2vl"]
+resource_name = "SparklesIdle"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.1, 1.3, 1.5, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nroww"]
+_data = {
+"RESET": SubResource("Animation_4jgp7"),
+"SparklesIdle": SubResource("Animation_yc2vl")
+}
+
+[node name="Key" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_4aoau")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("1_u5mgx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+z_index = 2
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-4, -4)
+texture = ExtResource("2_l6ycf")
+hframes = 5
+script = ExtResource("3_nvofm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D/Sprite2D2"]
+reset_on_save = false
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_nroww")
+}
