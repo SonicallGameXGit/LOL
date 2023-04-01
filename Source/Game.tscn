@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://drp8fiefed6ak"]
+
+[ext_resource type="TileSet" uid="uid://cv6crkathewvo" path="res://Resources/WorldTileset.tres" id="2_vckdn"]
+[ext_resource type="TileSet" uid="uid://cdaexnvp1pxha" path="res://Resources/DecorationTileset.tres" id="3_ywl1k"]
+[ext_resource type="PackedScene" uid="uid://bmdh06a6dt7sj" path="res://Prefabs/DoorOpenUI.tscn" id="4_d74c5"]
+[ext_resource type="PackedScene" uid="uid://xpule8f7e3no" path="res://Prefabs/DoorArea.tscn" id="4_ka51u"]
+[ext_resource type="PackedScene" uid="uid://dggkmnk07j3ut" path="res://Prefabs/Key.tscn" id="5_id6e3"]
+[ext_resource type="PackedScene" uid="uid://mmef2mpya28q" path="res://Prefabs/Player.tscn" id="5_rbiwf"]
+[ext_resource type="PackedScene" uid="uid://bnc10h7d28o1a" path="res://Prefabs/UI.tscn" id="7_u6des"]
+[ext_resource type="AudioStream" uid="uid://5xyt6hikty3q" path="res://Sounds/Ambient.ogg" id="8_bf20b"]
+[ext_resource type="Script" path="res://MusicPlayer2D.gd" id="9_g1qd6"]
+[ext_resource type="AudioStream" uid="uid://dp6t083tam2x2" path="res://Sounds/MonsterCrawling.ogg" id="9_ouhym"]
+[ext_resource type="AudioStream" uid="uid://b2qj0q2yhlg70" path="res://Sounds/Rebirth.ogg" id="10_t5vey"]
+
+[node name="Scene" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+texture_repeat = 1
+tile_set = ExtResource("2_vckdn")
+cell_quadrant_size = 1
+format = 2
+layer_0/tile_data = PackedInt32Array(-65537, 1, 0, -131072, 65537, 0, -131071, 1, 0, -2, 65537, 2, 65534, 65537, 2, 131071, 65537, 2, 65536, 65537, 2, 65537, 131073, 8, 65538, 65537, 3, 65539, 65537, 3, 65540, 65537, 3, 65541, 131073, 3, 5, 131073, 2, -65531, 131073, 2, -131067, 131073, 2, -131070, 196609, 1, -196606, 131073, 5, -327675, 458753, 0, -262139, 131073, 2, -196603, 131073, 2, 65535, 65537, 2, 0, 65537, 2, -1, 65537, 2, -65536, 65537, 2, 1, 262145, 3, 2, 65537, 2, -65535, 65537, 2, -65534, 65537, 2, -65533, 65537, 2, 3, 65537, 2, 4, 65537, 2, -65532, 65537, 2, -131068, 65537, 2, -196604, 65537, 2, -131069, 65537, 2, -196605, 65537, 2, -262141, 65537, 2, -262140, 65537, 2, -262142, 131073, 5, -327677, 65537, 0, -327678, 196609, 5, -327676, 524289, 0, 196607, 65537, 2, 131072, 65537, 2, 131073, 131073, 2, 196609, 131073, 2, 196608, 65537, 2, 262143, 65537, 8, 262142, 1, 3, 327679, 1, 2, 393215, 1, 3, 327680, 65537, 3, 327681, 131073, 3, 262145, 131073, 2, 262144, 65537, 2, -1048545, 131073, 0, -983009, 1, 2, -917473, 1, 2, -851937, 1, 2, -786401, 1, 2, -720865, 1, 3, -1310688, 196609, 5, -1245152, 131073, 5, -1179616, 131073, 5, -1114080, 131073, 5, -1048544, 327681, 1, -983008, 65537, 2, -917472, 65537, 2, -851936, 65537, 2, -786400, 65537, 2, -720864, 65537, 3, -1310687, 1, 0, -1245151, 65537, 2, -1179615, 65537, 2, -1114079, 65537, 2, -1048543, 65537, 2, -983007, 65537, 2, -917471, 65537, 2, -851935, 65537, 2, -786399, 65537, 2, -720863, 65537, 3, -1310686, 65537, 0, -1245150, 65537, 2, -1179614, 65537, 2, -1114078, 65537, 2, -1048542, 65537, 2, -983006, 65537, 2, -917470, 65537, 2, -851934, 65537, 2, -786398, 65537, 2, -720862, 65537, 3, -1310685, 1, 0, -1245149, 65537, 2, -1179613, 65537, 2, -1114077, 65537, 2, -1048541, 65537, 2, -983005, 65537, 2, -917469, 65537, 2, -851933, 65537, 2, -786397, 65537, 2, -720861, 65537, 3, -1310684, 65537, 0, -1245148, 65537, 2, -1179612, 65537, 2, -1114076, 65537, 2, -1048540, 65537, 2, -983004, 65537, 2, -917468, 65537, 2, -851932, 65537, 2, -786396, 65537, 2, -720860, 65537, 3, -1310683, 1, 0, -1245147, 65537, 2, -1179611, 65537, 2, -1114075, 65537, 2, -1048539, 65537, 2, -983003, 65537, 2, -917467, 65537, 2, -851931, 65537, 2, -786395, 65537, 2, -720859, 65537, 3, -1310682, 65537, 0, -1245146, 65537, 2, -1179610, 65537, 2, -1114074, 65537, 2, -1048538, 65537, 2, -983002, 65537, 2, -917466, 65537, 2, -851930, 65537, 2, -786394, 65537, 2, -720858, 65537, 3, -1310681, 65537, 0, -1245145, 65537, 2, -1179609, 65537, 2, -1114073, 65537, 2, -1048537, 65537, 2, -983001, 65537, 2, -917465, 65537, 2, -851929, 65537, 2, -786393, 65537, 2, -720857, 65537, 3, -1310680, 262145, 5, -1245144, 1, 5, -1179608, 1, 5, -1114072, 1, 5, -1048536, 262145, 1, -983000, 65537, 2, -917464, 65537, 2, -851928, 65537, 2, -786392, 65537, 2, -720856, 65537, 3, -1048535, 458753, 0, -982999, 131073, 2, -917463, 131073, 2, -851927, 131073, 2, -786391, 131073, 2, -720855, 131073, 3, 196604, 65537, 3, 196606, 65537, 8, 131070, 65537, 2, 196605, 65537, 3, 196603, 131073, 8, 262139, 131073, 2, 327675, 131073, 2, 393211, 131073, 3, 393210, 65537, 3, 393208, 65537, 3, 393207, 65537, 3, 393206, 1, 3, 327670, 1, 2, 262134, 1, 2, 196598, 1, 2, 131062, 1, 2, 65526, 131073, 0, 65527, 65537, 0, 65528, 1, 0, 65529, 65537, 0, 65530, 589825, 0, 65531, 65537, 0, 131067, 65537, 2, 196602, 65537, 2, 262138, 65537, 2, 327674, 65537, 2, 131066, 65537, 2, 131065, 65537, 2, 196601, 65537, 2, 262137, 65537, 2, 327673, 65537, 2, 262136, 393217, 4, 196600, 393217, 3, 131064, 65537, 2, 262135, 65537, 2, 327671, 65537, 2, 196599, 65537, 2, 131063, 65537, 2, 393209, 65537, 3, 327672, 393217, 5, 131069, 327681, 1, 65533, 131073, 5, -3, 131073, 5, -65539, 196609, 5, -65538, 1, 0, 131068, 262145, 1, 65532, 262145, 5)
+
+[node name="TileMap2" type="TileMap" parent="."]
+z_index = 2
+texture_filter = 1
+texture_repeat = 1
+tile_set = ExtResource("3_ywl1k")
+cell_quadrant_size = 1
+format = 2
+layer_0/z_index = 3
+layer_0/tile_data = PackedInt32Array(-786411, 0, 0, -786418, 131072, 0, 262164, 131072, 1, 1245188, 131072, 1, 1179612, 65536, 1, 1376218, 65536, 0, 196570, 131072, 0, 1376237, 196608, 0, 1245159, 131072, 1, 196590, 131072, 0, 458730, 0, 1)
+
+[node name="Player" parent="." instance=ExtResource("5_rbiwf")]
+
+[node name="DoorArea" parent="." instance=ExtResource("4_ka51u")]
+position = Vector2(144, -112)
+
+[node name="DoorArea2" parent="." instance=ExtResource("4_ka51u")]
+position = Vector2(-176, 28)
+
+[node name="Key" parent="." instance=ExtResource("5_id6e3")]
+position = Vector2(36, 139)
+
+[node name="Key2" parent="." instance=ExtResource("5_id6e3")]
+position = Vector2(-150.106, 149)
+rotation = -1.51271
+scale = Vector2(0.808272, 0.808272)
+
+[node name="Key3" parent="." instance=ExtResource("5_id6e3")]
+position = Vector2(-281, 124)
+rotation = 0.61595
+
+[node name="Key4" parent="." instance=ExtResource("5_id6e3")]
+position = Vector2(-281, 124)
+rotation = 0.61595
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 101.015
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("7_u6des")]
+
+[node name="DoorOpenUI" parent="CanvasLayer" instance=ExtResource("4_d74c5")]
+
+[node name="MusicPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_bf20b")
+attenuation = 1e-05
+panning_strength = 0.0
+script = ExtResource("9_g1qd6")
+
+[node name="HeartbeatPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_bf20b")
+attenuation = 5.69479e-05
+panning_strength = 0.0
+
+[node name="KeyPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_bf20b")
+attenuation = 5.69479e-05
+
+[node name="MonsterPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ouhym")
+volume_db = -21.84
+autoplay = true
+attenuation = 0.450632
+
+[node name="GunPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -7.28
+autoplay = true
+attenuation = 21.857
+
+[node name="RebirthPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_t5vey")
+attenuation = 7.01121e-05
+panning_strength = 0.0
